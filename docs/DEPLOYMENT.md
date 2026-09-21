@@ -34,7 +34,11 @@ Public resolvers 1.1.1.1, 8.8.8.8, and 9.9.9.9 returned GitHub Pages addresses f
 
 ## HTTPS status
 
-Both custom domains are saved in GitHub Pages and both DNS checks are successful. The `asitube.com` certificate is issued and **Enforce HTTPS** is enabled. The `asitube.io` certificate is still pending and its enforcement control remains disabled. Some local DNS caches still return no address for `.com` despite successful GitHub validation and correct public resolver answers. Do not bypass certificate warnings. Recheck the redirect repository's Settings → Pages after issuance, enable **Enforce HTTPS**, then verify the apex and www URLs and the `.io` deep-link redirect.
+Both custom domains are saved in GitHub Pages and both DNS checks have succeeded. The `asitube.com` certificate is issued and **Enforce HTTPS** is enabled. The `asitube.io` certificate is still pending and its enforcement control remains disabled. `www.asitube.com` also did not yet pass certificate verification at the final check. Recheck certificates for both www variants before claiming completion.
+
+The local DNS provider still returned no address for `.com` and the old Namecheap forwarding address for `.io`, despite correct public resolver answers. Flushing the Windows DNS cache succeeded but did not change those upstream answers. No system DNS provider or hosts-file settings were changed. A direct `curl --resolve` check against the configured GitHub IP (with normal certificate verification, without `--insecure`) returned HTTPS 200 for `asitube.com`. The downloaded homepage, legal notice, and privacy page matched the local files byte-for-byte. This confirms the main deployment independently of the stale local resolver, but is not an end-to-end browser check through ordinary DNS.
+
+Do not bypass certificate warnings. Recheck the redirect repository's Settings → Pages after issuance, enable **Enforce HTTPS**, then verify the apex and www URLs and the `.io` deep-link redirect. The local preview at http://127.0.0.1:4178/ can be used while DNS propagates.
 
 ## Validation performed
 
@@ -48,6 +52,7 @@ Both custom domains are saved in GitHub Pages and both DNS checks are successful
 - The contact panel follows the existing ASimulation email-draft flow. Required-field validation, subject/body encoding, and stale-draft invalidation were checked locally without sending email. Desktop and 390px layouts were visually inspected; the narrow contact page had no horizontal overflow. Console warnings/errors were empty.
 - Local legal and privacy pages were added using business details verified against the public ASimulation legal notice. Privacy text describes the actual local draft, Gmail, email-app, and copy actions.
 - The first workflow failed before Pages was enabled; its retry succeeded. Run [35662939251](https://github.com/rogerbootsma/asitube/actions/runs/35662939251) also completed successfully. A notification for the initial failure does not describe the later successful state.
+- Contact and local legal pages deployed successfully in run [35663424223](https://github.com/rogerbootsma/asitube/actions/runs/35663424223), commit `85d73c8dcb89d9c2280575be9c0915fa51bac69e`.
 
 ## Brand deliverables
 
