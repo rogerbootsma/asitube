@@ -8,7 +8,7 @@ Run `node preview.mjs`, then open http://127.0.0.1:4178. Run `node validate.mjs`
 
 ## Scope
 
-The site presents the vision for simulated-world broadcasts, personal AI filmmaking studios, and branching timelines. These platform services are explicitly described as in development. The world artwork and authored two-path story sketch run entirely in the browser. There is no signup, streaming backend, AI generation API, visitor tracking, or browser persistence.
+The site presents the vision for simulated-world broadcasts, personal AI filmmaking studios, and branching timelines. These platform services are explicitly described as in development. The world artwork and authored two-path story sketch run entirely in the browser. There is no signup, streaming backend, AI generation API, visitor tracking, or browser persistence. The contact panel follows ASimulation's local email-draft flow, offering Gmail, an email app, or copying after preparation. It does not submit messages to a server or send email automatically. Local legal-notice and privacy pages use the existing Metaversal Arts business information.
 
 ## Brand assets
 

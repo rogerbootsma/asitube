@@ -34,17 +34,20 @@ Public resolvers 1.1.1.1, 8.8.8.8, and 9.9.9.9 returned GitHub Pages addresses f
 
 ## HTTPS status
 
-Both custom domains are saved in GitHub Pages and both DNS checks are successful. GitHub has requested TLS certificates. At this checkpoint, certificate issuance remains pending. The **Enforce HTTPS** controls are disabled until issuance completes. Do not bypass certificate warnings. Recheck both repositories' Settings → Pages after propagation, enable **Enforce HTTPS**, then verify the apex and www URLs and the `.io` deep-link redirect.
+Both custom domains are saved in GitHub Pages and both DNS checks are successful. The `asitube.com` certificate is issued and **Enforce HTTPS** is enabled. The `asitube.io` certificate is still pending and its enforcement control remains disabled. Some local DNS caches still return no address for `.com` despite successful GitHub validation and correct public resolver answers. Do not bypass certificate warnings. Recheck the redirect repository's Settings → Pages after issuance, enable **Enforce HTTPS**, then verify the apex and www URLs and the `.io` deep-link redirect.
 
 ## Validation performed
 
-- `node validate.mjs`: four HTML pages, 44 local file/fragment references, JavaScript syntax, canonical channel, ASimulation link, and concept-stage labels passed.
+- `node validate.mjs` checks HTML pages, local file/fragment references, JavaScript syntax, canonical channel, ASimulation link, and concept-stage labels.
 - Homepage inspected in desktop and 390px layouts, with no horizontal overflow in those checks.
 - Both branching story choices changed the narrative and artwork; Surface and Signals views plus animation pause/play updated their controls correctly.
 - No warnings or errors were recorded in the preview console during the interaction check.
 - Brand page inspected on desktop. The 1545 × 423 mobile-safe banner crop was inspected; essential banner text and logo fit within it.
 - Redirect code tested with homepage, deep link, query/fragment, unusual double-slash path, and repository-path cases. Destination origin remained fixed.
 - Main GitHub Pages deployment was visually verified at its default URL before adding the custom domain.
+- The contact panel follows the existing ASimulation email-draft flow. Required-field validation, subject/body encoding, and stale-draft invalidation were checked locally without sending email. Desktop and 390px layouts were visually inspected; the narrow contact page had no horizontal overflow. Console warnings/errors were empty.
+- Local legal and privacy pages were added using business details verified against the public ASimulation legal notice. Privacy text describes the actual local draft, Gmail, email-app, and copy actions.
+- The first workflow failed before Pages was enabled; its retry succeeded. Run [35662939251](https://github.com/rogerbootsma/asitube/actions/runs/35662939251) also completed successfully. A notification for the initial failure does not describe the later successful state.
 
 ## Brand deliverables
 

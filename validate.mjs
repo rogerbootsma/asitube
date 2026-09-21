@@ -9,7 +9,7 @@ for(const file of files){
   const html=await readFile(resolve(root,file),'utf8');
   if(!html.includes('name="viewport"'))throw Error(`Missing viewport: ${file}`);
   for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){
-    const link=match[1];if(/^(https?:|mailto:|data:)/.test(link))continue;
+    const link=match[1];if(/^(https?:|mailto:|tel:|data:)/.test(link))continue;
     const [path,hash]=link.split('#');
     const target=path?resolve(dirname(resolve(root,file)),path.endsWith('/')?path+'index.html':path):resolve(root,file);
     if(!(await stat(target)).isFile())throw Error(`Missing file ${link} in ${file}`);
